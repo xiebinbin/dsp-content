@@ -12,7 +12,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::domain(env('APP_DOMAIN'))->group(function () {
+    Route::get('/', function () {
+        return redirect('/admin');
+    });
+});
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/admin');
 });
