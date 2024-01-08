@@ -30,6 +30,7 @@ class CategoryController extends AdminController
             ]);
             $grid->column('site.name','站点');
             $grid->column('post_count');
+            $grid->model()->orderBy('updated_at', 'desc');
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->panel();
                 $filter->like('name');
