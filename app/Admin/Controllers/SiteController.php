@@ -140,6 +140,7 @@ class SiteController extends AdminController
     }
     public function options()
     {
+        $adminUserId = null;
         if(!Admin::user()->isAdministrator()) {  
             $adminUserId = Admin::user()->id;
         }
