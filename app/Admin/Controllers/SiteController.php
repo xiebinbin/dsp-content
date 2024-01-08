@@ -21,7 +21,7 @@ class SiteController extends AdminController
         return Grid::make(new Site(), function (Grid $grid) {
             $grid->column('id');
             $grid->column('name')->display(function () {
-                return "<a href='//posts/{$this->name}' target='_blank'>{$this->name}</a>";
+                return "<a href='//{$this->domain}' target='_blank'>{$this->name}</a>";
             });
             $grid->column('post_count');
             $grid->column('category_count');
