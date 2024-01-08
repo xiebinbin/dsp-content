@@ -115,7 +115,7 @@ class SiteController extends AdminController
             $form->text('email');
             $form->radio('status')->options([0 => '禁用', 1 => '启用'])->default(1)->required();
             $form->select('theme')->options(['default' => '默认'])->default('default');
-            $form->select('admin_user_id')->options(\App\Models\AdminUser::all()->pluck('username', 'id'));
+            $form->select('admin_user_id')->options(\App\Models\AdminUser::all()->pluck('username', 'id'))->required();
             $form->display('created_at');
             $form->display('updated_at');
             $form->saving(function (Form $form) {
@@ -140,7 +140,9 @@ class SiteController extends AdminController
     }
     public function options()
     {
-        $adminUserId =Admin::user()->id;
+        if(!Admin::user()->isAdministrator()) {  
+            $adminUserId = Admin::user()->id;
+        }
         return response()->json(Site::make()->options($adminUserId));
     }
 }
