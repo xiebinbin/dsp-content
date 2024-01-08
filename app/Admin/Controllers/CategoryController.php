@@ -96,6 +96,11 @@ class CategoryController extends AdminController
     {
         return Form::make(new Category(), function (Form $form) {
             $form->display('id');
+            if($form->isCreating()) {
+                $form->select('site_id')->required()->options('/sites/options');
+            }else{
+                $form->display('site.name','站点');
+            }
             $form->text('name')->required();
             $form->text('slug')->required();
             $form->radio('status')->options([1 => '启用', 0 => '禁用'])->default(1);
@@ -104,7 +109,6 @@ class CategoryController extends AdminController
                 $form->text('post_count');
             }
             $form->number('order')->default(10);
-            $form->select('site_id')->required()->options('/sites/options');
             $form->textarea('description');
             $form->display('created_at');
             $form->display('updated_at');
