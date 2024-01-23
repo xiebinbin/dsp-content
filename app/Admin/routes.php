@@ -1,6 +1,7 @@
 <?php
 
 use App\Admin\Controllers\CategoryController;
+use App\Admin\Controllers\FileController;
 use App\Admin\Controllers\PostController;
 use App\Admin\Controllers\SiteController;
 use Illuminate\Routing\Router;
@@ -22,5 +23,7 @@ Route::group([
     $router->get('categories/options', [CategoryController::class, 'options']);
     $router->resource('categories', CategoryController::class);
     $router->resource('posts', PostController::class);
+    $router->post('file/upload-by-url',[FileController::class, 'uploadByUrl']);
+    $router->post('file/upload-by-file',[FileController::class, 'uploadByFile']);
 
 });

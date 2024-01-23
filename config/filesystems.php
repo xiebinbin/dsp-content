@@ -37,6 +37,7 @@ return [
         ],
         'doge' => [
             'driver' => 'doge',
+            'url' => env('DOGE_URL'),
         ],
         'public' => [
             'driver' => 'local',

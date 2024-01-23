@@ -95,7 +95,8 @@ class PostController extends AdminController
             $form->textarea('description');
             $form->image('thumb')->disk('doge')->dir('posts/thumb')->uniqueName();
             $form->image('cover')->disk('doge')->dir('posts/cover')->uniqueName();
-            $form->markdown('content')->disk('doge')->imageDirectory('posts/images');
+            $form->editorjs('content');
+            //->disk('doge')->imageDirectory('posts/images');
             $form->number('order');
             $form->radio('status')->options([1 => '启用', 0 => '禁用'])->default(1);
             $form->creating(function (Form $form) {
