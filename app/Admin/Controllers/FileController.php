@@ -10,7 +10,7 @@ class FileController extends AdminController
 {
     public function uploadByUrl(Request $request) {
         $url = $request->input('url','');
-        if (strpos($url, config('filesystems.disks.doge.url')) === false) {
+        if (strpos($url, config('filesystems.disks.doge.url'))) {
             $aurl = parse_url($url, PHP_URL_PATH);
             $ext = pathinfo($aurl, PATHINFO_EXTENSION);
             $fileName = 'posts/images/'.md5($url) . '.' . $ext;
